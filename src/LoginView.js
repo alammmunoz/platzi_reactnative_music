@@ -26,12 +26,13 @@ const config = {
 };
 firebase.initializeApp(config);
 
-const { FacebookAuthProvider } = firebase.auth
-const auth = firebase.auth
+const { FacebookAuthProvider } = firebase.auth()
+const auth = firebase.auth()
 
 export default class LoginView extends Component {
 
     authenticateUser(accessToken) {
+        alert("inicio");
         const credential = FacebookAuthProvider.credential(accessToken)
         // Get reference to the currently signed-in user
         var prevUser = auth.currentUser;
@@ -63,6 +64,7 @@ export default class LoginView extends Component {
         } else {
           AccessToken.getCurrentAccessToken().then(() => {
             //Actions.home()
+            alert("in");
             this.authenticateUser(data.accesToken)
           })
         }
